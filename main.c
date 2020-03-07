@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <inttypes.h>
 #include <sys/types.h>
 #include <unistd.h>
 
@@ -20,9 +23,9 @@ int main(int argc, char** argv){
   int vectorSize;
   fscanf(inputFile, "%d\n", &vectorSize);
 
-  int* vector = malloc(vectorSize * sizeof(*vector));
+  int * vector = malloc(vectorSize * sizeof(*vector));
 
-  for(int i = vector; fscanf(inputFile, "%d", i) == 1; i++)
+  for(int*  i = vector; fscanf(inputFile, "%d", i) == 1; i++)
     ;
 
   fclose(inputFile);
@@ -44,6 +47,7 @@ int main(int argc, char** argv){
     }
          
   }
-  pause();
+
+
   return 0;
 }
