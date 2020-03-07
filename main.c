@@ -12,15 +12,20 @@ int main(int argc, char** argv){
     exit(EXIT_FAILURE);
   }
 
+  int childrenCount = atoi(argv[1]);
+  pid_t* childProcessList = malloc(childrenCount * sizeof(*childProcessList) );
 
   for (int i = 0; i < childrenCount; i++){
-         int f = fork();
-         if (f == 0){
-                 printf("\tI am a fork pid = %d\nMy parent pid = %d\n", getpid(), getppid());
-                 pause();
-         } else if (f != -1) {
-                 printf("I am the parent pid = %d\n", getpid());
-         }
+
+    int f = fork();
+    if (f == 0){
+      printf("\tI am a fork pid = %d\nMy parent pid = %d\n", getpid(), getppid());
+      pause();
+      // it should never reach this place
+    } else if (f != -1) {
+      printf("I am the parent pid = %d\n", getpid());
+      childProcessList[i] = f;
+    }
          
   }
   pause();
