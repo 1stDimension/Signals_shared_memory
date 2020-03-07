@@ -15,6 +15,17 @@ int main(int argc, char** argv){
   int childrenCount = atoi(argv[1]);
   pid_t* childProcessList = malloc(childrenCount * sizeof(*childProcessList) );
 
+  FILE* inputFile = fopen(argv[2], "r");
+
+  int vectorSize;
+  fscanf(inputFile, "%d\n", &vectorSize);
+
+  int* vector = malloc(vectorSize * sizeof(*vector));
+
+  for(int i = vector; fscanf(inputFile, "%d", i) == 1; i++)
+    ;
+
+  fclose(inputFile);
   for (int i = 0; i < childrenCount; i++){
 
     int f = fork();
