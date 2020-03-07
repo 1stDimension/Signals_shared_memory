@@ -26,6 +26,11 @@ int main(int argc, char** argv){
     ;
 
   fclose(inputFile);
+
+  for (int i = 0; i < vectorSize; i++)
+    printf("%d", vector[i]);
+  printf("\n");
+
   for (int i = 0; i < childrenCount; i++){
 
     int f = fork();
