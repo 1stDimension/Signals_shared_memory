@@ -21,7 +21,10 @@ int main(int argc, char** argv){
   FILE* inputFile = fopen(argv[2], "r");
 
   int vectorSize;
-  fscanf(inputFile, "%d\n", &vectorSize);
+  if (fscanf(inputFile, "%d\n", &vectorSize) != 1){
+    fclose(inputFile);
+    exit(EXIT_FAILURE);
+  }
 
   int * vector = malloc(vectorSize * sizeof(*vector));
 
